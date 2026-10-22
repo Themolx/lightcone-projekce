@@ -101,12 +101,13 @@
 
   if (/\/filmmaker-\d+/.test(path) && name) {
     // jméno v Projekci je ve tvaru „Jméno PŘÍJMENÍ“, nadpis stránky bývá stejný
-    banner('Všechny filmy tohoto filmaře s ukázkou →', projekce({ author: name }));
+    const n = document.querySelectorAll('table.catalogue ' + VIDEO_ICON).length;
+    if (n) banner(`${n} ${n === 1 ? 'film' : n < 5 ? 'filmy' : 'filmů'} s ukázkou — otevřít v Projekci →`, projekce({ author: name }));
   } else if (/\/film-\d+/.test(path)) {
     const id = path.match(/\/film-(\d+)/)[1];
     const author = main?.querySelector('a[href*="/filmmaker-"]')?.textContent.trim();
-    if (author) banner(`Další filmy: ${author} →`, projekce({ author }));
     if (document.querySelector('#main video')) {
+      if (author) banner(`Další filmy s ukázkou: ${author} →`, projekce({ author }));
       const a = document.createElement('a');
       a.className = 'lcp-inline';
       a.href = projekce({ film: id }); a.target = '_blank'; a.rel = 'noopener';

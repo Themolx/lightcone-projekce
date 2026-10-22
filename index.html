@@ -150,7 +150,7 @@ a { color: inherit; }
 mark { background: var(--sel); color: inherit; border-radius: 2px; box-shadow: 0 1px 0 var(--accent); }
 
 .more { display: flex; justify-content: center; margin-top: 30px; }
-.empty { padding: 60px 0; color: var(--muted); text-align: center; }
+.empty { grid-column: 1 / -1; padding: 60px 0; color: var(--muted); text-align: center; }
 .empty b { display: block; font: 700 1.6rem var(--display); color: var(--fg); text-transform: uppercase; }
 
 /* ---- promítání ---- */
@@ -490,7 +490,9 @@ function renderMore() {
   $('grid').appendChild(frag); shown = end;
   $('more').hidden = shown >= results.length;
   $('more').textContent = `Zobrazit další (${results.length - shown})`;
-  if (!results.length) $('grid').innerHTML = '<div class="empty"><b>Nic nenalezeno</b>Zkus méně slov nebo uvolni filtry.</div>';
+  if (!results.length) $('grid').innerHTML = state.author && !FILMS.some(f => f.a.includes(state.author))
+    ? `<div class="empty"><b>Žádná ukázka</b>${esc(state.author)} nemá v katalogu žádný film s online ukázkou.</div>`
+    : '<div class="empty"><b>Nic nenalezeno</b>Zkus méně slov nebo uvolni filtry.</div>';
 }
 function renderBar() {
   $('count').innerHTML = `${results.length.toLocaleString('cs')} <small>z ${FILMS.length.toLocaleString('cs')} filmů</small>`;
