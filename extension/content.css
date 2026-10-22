@@ -1,0 +1,22 @@
+.lcp-play {
+  margin-top: 6px; display: inline-block; cursor: pointer;
+  background: #b5650f; color: #fff; border: 0; border-radius: 4px;
+  padding: 4px 10px; font: 600 12px/1.4 system-ui, sans-serif;
+}
+.lcp-play:hover { background: #8f4f0b; }
+.lcp-player-row td { padding: 6px 0 18px; }
+.lcp-player-row video { width: 100%; max-height: 70vh; background: #000; display: block; }
+
+.lcp-thumb { position: relative; }
+.lcp-thumb video { position: absolute; left: 0; top: 0; object-fit: cover; opacity: 0; transition: opacity .25s; pointer-events: none; }
+.lcp-thumb.lcp-hovering video { opacity: 1; }
+
+.lcp-banner {
+  display: flex; gap: 10px; align-items: baseline; margin: 0 0 16px; padding: 10px 14px;
+  background: #1c1b22; color: #ece8df !important; text-decoration: none !important; border-radius: 4px;
+  font: 14px/1.4 system-ui, sans-serif;
+}
+.lcp-banner b { color: #f0a640; text-transform: uppercase; letter-spacing: .06em; font-size: 12px; }
+.lcp-banner:hover span { text-decoration: underline; }
+.lcp-inline { display: inline-block; margin-top: 6px; color: #b5650f; font: 600 13px system-ui, sans-serif; }
+.lcp-header { display: block; margin-top: -8px; font: 11px system-ui, sans-serif; color: #b5650f; text-align: right; }

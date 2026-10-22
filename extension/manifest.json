@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Light Cone Projekce",
+  "version": "1.0.0",
+  "description": "Přehrávání ukázek přímo ve výsledcích katalogu Light Cone a odkazy na chytré vyhledávání Projekce.",
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "action": { "default_title": "Otevřít Light Cone Projekce", "default_icon": { "16": "icons/16.png", "48": "icons/48.png" } },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://lightcone.org/*"],
+      "js": ["config.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ]
+}
